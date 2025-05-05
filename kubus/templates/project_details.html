@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Pinnacle Residences - Project Details | KUBUS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF0000",
+              secondary: "#1A1A1A",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "2px",
+              DEFAULT: "4px",
+              md: "8px",
+              lg: "12px",
+              xl: "16px",
+              "2xl": "20px",
+              "3xl": "24px",
+              full: "9999px",
+              button: "4px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      .dot.active {
+      background-color: #FF0000;
+      }
+      #slider {
+    display: flex;
+    width: calc(100% * {{ this_project.images|length }}); /* Dynamic width */
+    transition: transform 0.5s ease-in-out;
+  }
+  #slider > div {
+    width: calc(100% / {{ this_project.images|length }}); /* Equal division */
+    flex-shrink: 0; /* Prevent shrinking */
+    height: 100%; /* Maintain full height */
+  }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="fixed w-full bg-white/95 backdrop-blur-sm z-50 transition-all duration-300"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <img
+            src="https://public.readdy.ai/ai/img_res/eee2793a9deedf4465ea240e55f4fe1f.jpg"
+            alt="KUBUS Logo"
+            class="h-10"
+          />
+        </div>
+        <div class="flex items-center space-x-8">
+          <a
+            href= {{ url_for("home") }}
+            class="nav-link text-secondary hover:text-primary transition-colors"
+            >Home</a
+          >
+          <a
+            href= {{ url_for("projects") }}
+            class="nav-link text-secondary hover:text-primary transition-colors"
+            >Projects</a
+          >
+          <a href = {{ url_for("contact") }}>
+          <button
+            class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-red-600 transition-colors cursor-pointer whitespace-nowrap"
+          >
+            Contact Us
+          </button>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main class="pt-20">
+      <nav class="container mx-auto px-6 py-4">
+        <div class="flex items-center space-x-2 text-sm">
+          <a
+            href= {{ url_for("projects") }}
+            data-readdy="true"
+            class="text-gray-600 hover:text-primary"
+            >Projects</a
+          >
+          <i class="ri-arrow-right-s-line text-gray-400"></i>
+          <span class="text-primary"> {{ this_project.data["title"] }} </span>
+        </div>
+      </nav>
+      <div class="relative h-[600px] overflow-hidden">
+        <div
+          class="flex h-full"
+          id="slider"
+          style="transition: transform 0.5s ease-in-out;"
+        >
+        {% for image in this_project.images %}
+          <div class="w-full h-full flex-shrink-0">
+            <img
+              src= "{{ url_for("static", filename=image) }}"
+              alt="Project Image 1"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        {% endfor %}
+        </div>
+        <button
+          class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white transition-colors"
+          id="prevBtn"
+        >
+          <i class="ri-arrow-left-s-line text-2xl"></i>
+        </button>
+        <button
+          class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white transition-colors"
+          id="nextBtn"
+        >
+          <i class="ri-arrow-right-s-line text-2xl"></i>
+        </button>
+        <div
+          class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2"
+          id="dots"
+        >
+          {% for _ in this_project.images %}
+          <button
+            class="dot w-3 h-3 rounded-full bg-white/50 transition-colors"
+          ></button>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="container mx-auto px-6 py-12">
+        <h1 class="text-4xl font-bold text-secondary mb-6">
+          {{ this_project.data["title"] }}
+        </h1>
+        <div class="prose max-w-none mb-12">
+          <p class="text-gray-600 leading-relaxed">
+          {{ this_project.data["description"] }}
+          </p>
+        </div>
+        <div class="bg-white !rounded-lg shadow-md overflow-hidden">
+          <table class="w-full">
+            <tbody>
+              <tr class="border-b">
+                <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
+                  Project Type
+                </td>
+                <td class="py-4 px-6">{{ this_project.data["project type"] }}</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
+                  Industry
+                </td>
+                <td class="py-4 px-6">{{ this_project.data["industry"] }}</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
+                  Location
+                </td>
+                <td class="py-4 px-6">{{ this_project.data["location"] }}</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
+                  Surface Area
+                </td>
+                <td class="py-4 px-6">{{ this_project.data["surface area"] }}</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
+                  Architect
+                </td>
+                <td class="py-4 px-6">{{ this_project.data["architect"] }}</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
+                  Investor
+                </td>
+                <td class="py-4 px-6">{{ this_project.data["investor"] }}</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
+                  Contractor
+                </td>
+                <td class="py-4 px-6">{{ this_project.data["contractor"] }}</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
+                  End Date
+                </td>
+                <td class="py-4 px-6">{{ this_project.data["end date"] }}</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
+                  Our Role
+                </td>
+                <td class="py-4 px-6">
+                  {{ this_project.data["our role"] }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-secondary text-white py-12">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <img
+              src="https://public.readdy.ai/ai/img_res/cc1cab407595b3b152b259d5f45bd22a.jpg"
+              alt="KUBUS Logo"
+              class="h-10 mb-4"
+            />
+            <p class="text-gray-400">Excellence in Project Management</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">Contact</h4>
+            <p class="text-gray-400">123 Business Street</p>
+            <p class="text-gray-400">New York, NY 10001</p>
+            <p class="text-gray-400">+1 (555) 123-4567</p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2025 KUBUS. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slider = document.getElementById("slider");
+        const slides = slider.children;
+        const dots = document.querySelectorAll(".dot");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        let currentSlide = 0;
+        let slideInterval;
+        let isTransitioning = false;
+        function updateSlider() {
+          if (isTransitioning) return;
+          isTransitioning = true;
+          slider.style.transform = `translateX(-${currentSlide * (100 / slides.length)}%)`;
+
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentSlide);
+          });
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 500);
+        }
+        function nextSlide() {
+          if (isTransitioning) return;
+          currentSlide = (currentSlide + 1) % slides.length;
+          updateSlider();
+        }
+        function prevSlide() {
+          if (isTransitioning) return;
+          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+          updateSlider();
+        }
+        function startSlideShow() {
+          stopSlideShow();
+          slideInterval = setInterval(nextSlide, 5000);
+        }
+        function stopSlideShow() {
+          if (slideInterval) {
+            clearInterval(slideInterval);
+          }
+        }
+        prevBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          stopSlideShow();
+          prevSlide();
+          startSlideShow();
+        });
+        nextBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          stopSlideShow();
+          nextSlide();
+          startSlideShow();
+        });
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            if (currentSlide === index || isTransitioning) return;
+            stopSlideShow();
+            currentSlide = index;
+            updateSlider();
+            startSlideShow();
+          });
+        });
+        slider.addEventListener("mouseenter", stopSlideShow);
+        slider.addEventListener("mouseleave", startSlideShow);
+        // Touch events
+        let touchStartX = 0;
+        let touchEndX = 0;
+        slider.addEventListener(
+          "touchstart",
+          (e) => {
+            touchStartX = e.touches[0].clientX;
+            stopSlideShow();
+          },
+          false,
+        );
+        slider.addEventListener(
+          "touchmove",
+          (e) => {
+            touchEndX = e.touches[0].clientX;
+          },
+          false,
+        );
+        slider.addEventListener(
+          "touchend",
+          () => {
+            const touchDiff = touchStartX - touchEndX;
+            if (Math.abs(touchDiff) > 50) {
+              if (touchDiff > 0) {
+                nextSlide();
+              } else {
+                prevSlide();
+              }
+            }
+            startSlideShow();
+          },
+          false,
+        );
+        updateSlider();
+        startSlideShow();
+      });
+    </script>
+  </body>
+</html>
