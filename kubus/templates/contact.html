@@ -245,12 +245,14 @@
               >
                 Send Message
               </button>
-              {% if message_sent == False %}
+              {% with message_sent = get_flashed_messages()[0] %}
+              {% if message_sent == "Error" %}
               <p class="text-red-600">Oops! Something went wrong, try again.</p>
               {% endif %}
-              {% if message_sent == True %}
+              {% if message_sent == "Success" %}
               <p class="text-green-500">Message sent successfully!</p>
               {% endif %}
+              {% endwith %}
             </form>
           </div>
         </div>

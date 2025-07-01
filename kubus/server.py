@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
+from os import getenv
+from dotenv import load_dotenv
 import smtplib
 from project import Project
 import os
 OWN_EMAIL ="office@kubus.rs"
 OWN_PASSWORD="" #app key
+load_dotenv()
 CONFIRMATION_EMAIL = """
 Subject: Potvrda o popunjenom uputu – Kubus
 
@@ -27,6 +30,7 @@ for project in PROJECTS:
 
 
 app = Flask(__name__)
+app.secret_key = getenv("SECRET_KEY")
 
 @app.route("/")
 def home():
@@ -38,7 +42,7 @@ def contact():
         email_message = "Subject:Neko je popunio formular preko sajta\n\n"
         for key, value in request.form.items():
             email_message+= f"{key}: {value}\n"
-        message_status = True
+        message_status = "Success"
 
         try:
             with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
@@ -47,15 +51,12 @@ def contact():
                 connection.sendmail(OWN_EMAIL, str(request.form["email_input"]), CONFIRMATION_EMAIL)
                 connection.sendmail(OWN_EMAIL, OWN_EMAIL, email_message)
         except:
-            message_status = False
+            message_status = "Error"
+        
+        flash(message_status)
+        return  redirect(url_for("contact"))
 
-        return  redirect(url_for('contact', success=message_status))
-    message_status = request.args.get('success', None)
-    if message_status == "True":
-        message_status = True
-    if message_status == "False":
-        message_status = False
-    return render_template("contact.html", message_sent = message_status)
+    return render_template("contact.html")
 
 @app.route("/projects", methods=["GET", "POST"])
 def projects():
