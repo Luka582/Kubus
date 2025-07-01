@@ -12,7 +12,7 @@ Subject: Potvrda o popunjenom uputu – Kubus
 
 Poštovani,
 
-Potvrđujemo da je uput uspešno popunjena. Hvala Vam na saradnji!
+Potvrđujemo da je uput uspešno popunjen. Hvala Vam na saradnji!
 
 Ukoliko imate dodatnih pitanja, slobodno nas kontaktirajte:
 📧 Email: info@kubus.rs  
@@ -22,15 +22,17 @@ Ukoliko imate dodatnih pitanja, slobodno nas kontaktirajte:
 Srdačan pozdrav,
 Kubus tim
 """
-project_folders = os.listdir("static")
-PROJECTS = [Project(f"static/{x}") for x in project_folders if x != "media"]
+
+app = Flask(__name__)
+app.secret_key = getenv("SECRET_KEY")
+
+project_folders = os.listdir(app.static_folder)
+PROJECTS = [Project(f"{app.static_folder}/{x}", app.static_folder) for x in project_folders if x != "media"]
+
 PROJECTS.sort(key=lambda x:x.data["project importance"], reverse=True)
 for project in PROJECTS:
     project.set_id(PROJECTS.index(project)+1)
 
-
-app = Flask(__name__)
-app.secret_key = getenv("SECRET_KEY")
 
 @app.route("/")
 def home():
