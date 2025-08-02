@@ -5,21 +5,21 @@ import smtplib
 from project import Project
 import os
 OWN_EMAIL ="office@kubus.rs"
-OWN_PASSWORD="" #app key
+OWN_PASSWORD= getenv("OWN_PASSWORD") #app key
 load_dotenv()
 CONFIRMATION_EMAIL = """
-Subject: Potvrda o popunjenom uputu – Kubus
+Subject: Potvrda o popunjenom uputu Kubus
 
-Poštovani,
+Postovani,
 
-Potvrđujemo da je uput uspešno popunjen. Hvala Vam na saradnji!
+Potvrdjujemo da je uput uspesno popunjen. Hvala Vam na saradnji!
 
 Ukoliko imate dodatnih pitanja, slobodno nas kontaktirajte:
-📧 Email: info@kubus.rs  
-📞 Telefon: +381 11 123 4567  
-📍 Lokacija: Bulevar Oslobođenja 123, Beograd
+  Email: info@kubus.rs  
+  Telefon: +381 11 123 4567  
+  Lokacija: Bulevar Oslobodjenja 123, Beograd
 
-Srdačan pozdrav,
+Srdacan pozdrav,
 Kubus tim
 """
 
@@ -43,16 +43,16 @@ def contact():
     if request.method == "POST":
         email_message = "Subject:Neko je popunio formular preko sajta\n\n"
         for key, value in request.form.items():
-            email_message+= f"{key}: {value}\n"
+            email_message+= f"{key}: {value.encode('ascii', errors= 'replace').decode('ascii')}\n"
         message_status = "Success"
 
         try:
-            with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-                connection.starttls()
+            with smtplib.SMTP_SSL("mail.kubus.rs", port=465) as connection:
                 connection.login(OWN_EMAIL, OWN_PASSWORD)
                 connection.sendmail(OWN_EMAIL, str(request.form["email_input"]), CONFIRMATION_EMAIL)
                 connection.sendmail(OWN_EMAIL, OWN_EMAIL, email_message)
-        except:
+        except Exception as e:
+            print(f"\n\nReason for the failed email:\n\n{e}\n\n\n\n")
             message_status = "Error"
         
         flash(message_status)
