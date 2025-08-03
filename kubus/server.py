@@ -4,22 +4,22 @@ from dotenv import load_dotenv
 import smtplib
 from project import Project
 import os
+from email.message import EmailMessage
+from email.policy import SMTP
 OWN_EMAIL ="office@kubus.rs"
 OWN_PASSWORD= getenv("OWN_PASSWORD") #app key
 load_dotenv()
 CONFIRMATION_EMAIL = """
-Subject: Potvrda o popunjenom uputu Kubus
+Poštovani,
 
-Postovani,
-
-Potvrdjujemo da je uput uspesno popunjen. Hvala Vam na saradnji!
+Potvrđujemo da je uput uspešno popunjen. Hvala Vam na saradnji!
 
 Ukoliko imate dodatnih pitanja, slobodno nas kontaktirajte:
   Email: info@kubus.rs  
   Telefon: +381 11 123 4567  
-  Lokacija: Bulevar Oslobodjenja 123, Beograd
+  Lokacija: Bulevar Oslobođenja 123, Beograd
 
-Srdacan pozdrav,
+Srdačan pozdrav,
 Kubus tim
 """
 
@@ -41,16 +41,28 @@ def home():
 @app.route("/contact", methods= ["GET", "POST"])
 def contact():
     if request.method == "POST":
-        email_message = "Subject:Neko je popunio formular preko sajta\n\n"
+        email_message = ""
         for key, value in request.form.items():
-            email_message+= f"{key}: {value.encode('ascii', errors= 'replace').decode('ascii')}\n"
+            email_message+= f"{key}: {value}\n"
+        confirmation_msg= EmailMessage(policy=SMTP)
+        confirmation_msg["From"] = OWN_EMAIL
+        confirmation_msg["To"] = str(request.form["email_input"])
+        confirmation_msg["Subject"]="Potvrda o popunjenom uputu Kubus"
+        confirmation_msg.set_content(CONFIRMATION_EMAIL)
+
+        data_msg= EmailMessage(policy=SMTP)
+        data_msg["From"] = OWN_EMAIL
+        data_msg["To"] = OWN_EMAIL
+        data_msg["Subject"]="Neko je popunio formular"
+        data_msg.set_content(email_message)
+        
         message_status = "Success"
 
         try:
             with smtplib.SMTP_SSL("mail.kubus.rs", port=465) as connection:
                 connection.login(OWN_EMAIL, OWN_PASSWORD)
-                connection.sendmail(OWN_EMAIL, str(request.form["email_input"]), CONFIRMATION_EMAIL)
-                connection.sendmail(OWN_EMAIL, OWN_EMAIL, email_message)
+                connection.send_message(confirmation_msg)
+                connection.send_message(data_msg)
         except Exception as e:
             print(f"\n\nReason for the failed email:\n\n{e}\n\n\n\n")
             message_status = "Error"
