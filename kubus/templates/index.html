@@ -117,7 +117,7 @@
     <section
       id="home"
       class="relative min-h-screen flex items-center pt-16"
-      style="background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.7)), url('https://public.readdy.ai/ai/img_res/9139d922f3f7e40320fd592e81efc197.jpg') center/cover"
+      style="background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.7)), url('{{ url_for('static', filename='media/index_hero.png') }}') center/cover"
     >
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -200,7 +200,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 h-auto lg:h-[600px]">
             <div class="relative h-full overflow-hidden !rounded-lg group">
               <img
-                src="https://public.readdy.ai/ai/img_res/bf02fb749aa0664e64a4656f5c409129.jpg"
+                src={{ url_for('static', filename='media/index_lilly.png') }}
                 alt="Stambeni projekat"
                 class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-20"
               />
@@ -220,7 +220,7 @@
             </div>
             <div class="relative h-full overflow-hidden !rounded-lg group">
               <img
-                src="https://public.readdy.ai/ai/img_res/ad5d32c0b6acf8d95875687a88b00ee8.jpg"
+                src={{ url_for('static', filename='media/index_parknovi.png') }}
                 alt="Komercijalni projekat"
                 class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-20"
               />
@@ -238,7 +238,7 @@
             </div>
             <div class="relative h-full overflow-hidden !rounded-lg group">
               <img
-                src="https://public.readdy.ai/ai/img_res/46aa7abe8119c3eba24dda644b9a279e.jpg"
+                src={{ url_for('static', filename='media/index_iq.png') }}
                 alt="Industrijski projekat"
                 class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-20"
               />
