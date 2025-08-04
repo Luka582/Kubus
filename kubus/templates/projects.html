@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KUBUS - Project Portfolio</title>
+    <title>KUBUS - Portfolio projekata</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -76,18 +76,18 @@
           <a
             href= {{ url_for("home") }}
             class="nav-link text-secondary hover:text-primary transition-colors"
-            >Home</a
+            >Početna</a
           >
           <a
             href= {{ url_for("projects") }}
             class="nav-link text-secondary hover:text-primary transition-colors"
-            >Projects</a
+            >Projekti</a
           >
           <a href = {{ url_for("contact") }}>
           <button
             class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-red-600 transition-colors cursor-pointer whitespace-nowrap"
           >
-            Contact Us
+            Kontaktirajte nas
           </button>
           </a>
         </div>
@@ -97,7 +97,7 @@
     <main class="pt-24 pb-16">
       <div class="container mx-auto px-6">
         <div class="flex justify-between items-center mb-12">
-          <h1 class="text-4xl font-bold text-secondary">Our Projects</h1>
+          <h1 class="text-4xl font-bold text-secondary">Naši projekti</h1>
         </div>
 
         <div class="space-y-8">
@@ -134,7 +134,7 @@
               <button
                 class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-red-600 transition-colors cursor-pointer whitespace-nowrap"
               >
-                View Details
+                Pogledajte detalje
               </button>
               </a>
             </div>
@@ -153,19 +153,19 @@
               alt="KUBUS Logo"
               class="h-10 mb-4"
             />
-            <p class="text-gray-400">Excellence in Project Management</p>
+            <p class="text-gray-400">Izvrsnost u upravljanju projektima</p>
           </div>
           <div>
-            <h4 class="text-lg font-bold mb-4">Contact</h4>
-            <p class="text-gray-400">123 Business Street</p>
-            <p class="text-gray-400">New York, NY 10001</p>
-            <p class="text-gray-400">+1 (555) 123-4567</p>
+            <h4 class="text-lg font-bold mb-4">Kontakt</h4>
+            <p class="text-gray-400">123 Poslovna ulica</p>
+            <p class="text-gray-400">Novi Sad, Srbija</p>
+            <p class="text-gray-400">+381 (21) 123-4567</p>
           </div>
         </div>
         <div
           class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
         >
-          <p>&copy; 2025 KUBUS. All rights reserved.</p>
+          <p>&copy; <script>document.write(new Date().getFullYear())</script> KUBUS. Sva prava zadržana.</p>
         </div>
       </div>
     </footer>

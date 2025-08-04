@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Pinnacle Residences - Project Details | KUBUS</title>
+    <title>Detalji projekta | KUBUS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -74,18 +74,18 @@
           <a
             href= {{ url_for("home") }}
             class="nav-link text-secondary hover:text-primary transition-colors"
-            >Home</a
+            >Početna</a
           >
           <a
             href= {{ url_for("projects") }}
             class="nav-link text-secondary hover:text-primary transition-colors"
-            >Projects</a
+            >Projekti</a
           >
           <a href = {{ url_for("contact") }}>
           <button
             class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-red-600 transition-colors cursor-pointer whitespace-nowrap"
           >
-            Contact Us
+            Kontaktirajte nas
           </button>
           </a>
         </div>
@@ -98,7 +98,7 @@
             href= {{ url_for("projects") }}
             data-readdy="true"
             class="text-gray-600 hover:text-primary"
-            >Projects</a
+            >Projekti</a
           >
           <i class="ri-arrow-right-s-line text-gray-400"></i>
           <span class="text-primary"> {{ this_project.data["title"] }} </span>
@@ -114,7 +114,7 @@
           <div class="w-full h-full flex-shrink-0">
             <img
               src= "{{ url_for("static", filename=image) }}"
-              alt="Project Image 1"
+              alt="Slika projekta 1"
               class="w-full h-full object-cover"
             />
           </div>
@@ -157,55 +157,55 @@
             <tbody>
               <tr class="border-b">
                 <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
-                  Project Type
+                  Tip projekta
                 </td>
                 <td class="py-4 px-6">{{ this_project.data["project type"] }}</td>
               </tr>
               <tr class="border-b">
                 <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
-                  Industry
+                  Industrija
                 </td>
                 <td class="py-4 px-6">{{ this_project.data["industry"] }}</td>
               </tr>
               <tr class="border-b">
                 <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
-                  Location
+                  Lokacija
                 </td>
                 <td class="py-4 px-6">{{ this_project.data["location"] }}</td>
               </tr>
               <tr class="border-b">
                 <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
-                  Surface Area
+                  Površina
                 </td>
                 <td class="py-4 px-6">{{ this_project.data["surface area"] }}</td>
               </tr>
               <tr class="border-b">
                 <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
-                  Architect
+                  Arhitekta
                 </td>
                 <td class="py-4 px-6">{{ this_project.data["architect"] }}</td>
               </tr>
               <tr class="border-b">
                 <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
-                  Investor
+                  Investitor
                 </td>
                 <td class="py-4 px-6">{{ this_project.data["investor"] }}</td>
               </tr>
               <tr class="border-b">
                 <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
-                  Contractor
+                  Izvođač
                 </td>
                 <td class="py-4 px-6">{{ this_project.data["contractor"] }}</td>
               </tr>
               <tr class="border-b">
                 <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
-                  End Date
+                  Datum završetka
                 </td>
                 <td class="py-4 px-6">{{ this_project.data["end date"] }}</td>
               </tr>
               <tr>
                 <td class="py-4 px-6 bg-gray-50 font-medium text-gray-600">
-                  Our Role
+                  Naša uloga
                 </td>
                 <td class="py-4 px-6">
                   {{ this_project.data["our role"] }}
@@ -225,19 +225,19 @@
               alt="KUBUS Logo"
               class="h-10 mb-4"
             />
-            <p class="text-gray-400">Excellence in Project Management</p>
+            <p class="text-gray-400">Izvrsnost u upravljanju projektima</p>
           </div>
           <div>
-            <h4 class="text-lg font-bold mb-4">Contact</h4>
-            <p class="text-gray-400">123 Business Street</p>
-            <p class="text-gray-400">New York, NY 10001</p>
-            <p class="text-gray-400">+1 (555) 123-4567</p>
+            <h4 class="text-lg font-bold mb-4">Kontakt</h4>
+            <p class="text-gray-400">123 Poslovna ulica</p>
+            <p class="text-gray-400">Novi Sad, Srbija</p>
+            <p class="text-gray-400">+381 (21) 123-4567</p>
           </div>
         </div>
         <div
           class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
         >
-          <p>&copy; 2025 KUBUS. All rights reserved.</p>
+          <p>&copy; <script>document.write(new Date().getFullYear())</script> KUBUS. Sva prava zadržana.</p>
         </div>
       </div>
     </footer>

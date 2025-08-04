@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us - KUBUS Project Management</title>
+    <title>Kontaktirajte nas - KUBUS Upravljanje Projektima</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -81,18 +81,18 @@
           <a
             href= {{ url_for("home") }}
             class="nav-link text-secondary hover:text-primary transition-colors"
-            >Home</a
+            >Početna</a
           >
           <a
             href= {{ url_for("projects") }}
             class="nav-link text-secondary hover:text-primary transition-colors"
-            >Projects</a
+            >Projekti</a
           >
           <a href = {{ url_for("contact") }}>
           <button
             class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-red-600 transition-colors cursor-pointer whitespace-nowrap"
           >
-            Contact Us
+            Kontaktirajte nas
           </button>
           </a>
         </div>
@@ -101,10 +101,10 @@
     <main class="pt-24 pb-16">
       <div class="container mx-auto px-6">
         <div class="text-center mb-16">
-          <h1 class="text-4xl font-bold text-secondary mb-4">Contact Us</h1>
+          <h1 class="text-4xl font-bold text-secondary mb-4">Kontaktirajte nas</h1>
           <p class="text-gray-600 max-w-2xl mx-auto">
-            We're here to help bring your project vision to life. Reach out to
-            our team of experts for personalized consultation and support.
+            Tu smo da vam pomognemo da ostvarite svoju projektnu viziju. Obratite se
+            našem timu stručnjaka za personalizovane konsultacije i podršku.
           </p>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -116,9 +116,9 @@
                 >
                   <i class="ri-map-pin-line text-primary text-2xl"></i>
                 </div>
-                <h3 class="text-lg font-semibold mb-2">Visit Us</h3>
+                <h3 class="text-lg font-semibold mb-2">Posetite nas</h3>
                 <p class="text-gray-600">
-                  Zmaj Ognjena Vuka 14,<br />Novi Sad, Serbia
+                  Zmaj Ognjena Vuka 14,<br />Novi Sad, Srbija
                 </p>
               </div>
               <div class="contact-card bg-white p-6 shadow-lg !rounded-lg">
@@ -127,7 +127,7 @@
                 >
                   <i class="ri-phone-line text-primary text-2xl"></i>
                 </div>
-                <h3 class="text-lg font-semibold mb-2">Call Us</h3>
+                <h3 class="text-lg font-semibold mb-2">Pozovite nas</h3>
                 <p class="text-gray-600">+381 21 555 123</p>
               </div>
               <div class="contact-card bg-white p-6 shadow-lg !rounded-lg">
@@ -136,7 +136,7 @@
                 >
                   <i class="ri-mail-line text-primary text-2xl"></i>
                 </div>
-                <h3 class="text-lg font-semibold mb-2">Email Us</h3>
+                <h3 class="text-lg font-semibold mb-2">Pošaljite nam email</h3>
                 <p class="text-gray-600">info@kubus.com</p>
               </div>
               <div class="contact-card bg-white p-6 shadow-lg !rounded-lg">
@@ -145,8 +145,8 @@
                 >
                   <i class="ri-time-line text-primary text-2xl"></i>
                 </div>
-                <h3 class="text-lg font-semibold mb-2">Working Hours</h3>
-                <p class="text-gray-600">Mon-Fri: 9:00 AM - 6:00 PM</p>
+                <h3 class="text-lg font-semibold mb-2">Radno vreme</h3>
+                <p class="text-gray-600">Pon-Pet: 9:00 - 18:00</p>
               </div>
             </div>
             <div class="bg-white shadow-lg !rounded-lg overflow-hidden">
@@ -155,9 +155,9 @@
                 style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png')"
               ></div>
               <div class="p-6">
-                <h3 class="text-lg font-semibold mb-2">Our Location</h3>
+                <h3 class="text-lg font-semibold mb-2">Naša lokacija</h3>
                 <p class="text-gray-600 mb-4">
-                  Located in the heart of Novi Sad's business district
+                  Nalazimo se u srcu poslovnog okruga Novog Sada
                 </p>
                 <a
                   href="https://maps.google.com"
@@ -165,18 +165,18 @@
                   class="inline-flex items-center text-primary hover:text-red-600 transition-colors"
                 >
                   <i class="ri-navigation-line mr-2"></i>
-                  Get Directions
+                  Preuzmite uputstva
                 </a>
               </div>
             </div>
           </div>
           <div class="bg-white shadow-lg !rounded-lg p-8">
-            <h2 class="text-2xl font-bold mb-6">Send us a Message</h2>
+            <h2 class="text-2xl font-bold mb-6">Pošaljite nam poruku</h2>
             <form id="contactForm" class="space-y-6" action= {{ url_for("contact") }}#contactForm method="POST">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label class="block text-gray-700 mb-2" for="name"
-                    >Full Name *</label
+                    >Puno ime *</label
                   >
                   <input
                     name="name_input"
@@ -188,7 +188,7 @@
                 </div>
                 <div>
                   <label class="block text-gray-700 mb-2" for="email"
-                    >Email Address *</label
+                    >Email adresa *</label
                   >
                   <input
                     name="email_input"
@@ -201,7 +201,7 @@
               </div>
               <div>
                 <label class="block text-gray-700 mb-2" for="phone"
-                  >Phone Number</label
+                  >Broj telefona</label
                 >
                 <input
                   name="phone_input"
@@ -212,7 +212,7 @@
               </div>
               <div>
                 <label class="block text-gray-700 mb-2" for="subject"
-                  >Subject *</label
+                  >Predmet *</label
                 >
                 <select
                   name="subject_input"
@@ -220,16 +220,16 @@
                   class="form-input w-full px-4 py-2 border border-gray-300 !rounded-lg text-gray-700"
                   required
                 >
-                  <option value="">Please select</option>
-                  <option value="general">General Inquiry</option>
-                  <option value="project">Project Discussion</option>
-                  <option value="support">Technical Support</option>
-                  <option value="other">Other</option>
+                  <option value="">Molimo odaberite</option>
+                  <option value="general">Opšti upit</option>
+                  <option value="project">Diskusija o projektu</option>
+                  <option value="support">Tehnička podrška</option>
+                  <option value="other">Ostalo</option>
                 </select>
               </div>
               <div>
                 <label class="block text-gray-700 mb-2" for="message"
-                  >Message *</label
+                  >Poruka *</label
                 >
                 <textarea
                   name="message_input"
@@ -243,14 +243,14 @@
                 type="submit"
                 class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-red-600 transition-colors cursor-pointer whitespace-nowrap"
               >
-                Send Message
+                Pošalji poruku
               </button>
               {% with message_sent = get_flashed_messages()[0] %}
               {% if message_sent == "Error" %}
-              <p class="text-red-600">Oops! Something went wrong, try again.</p>
+              <p class="text-red-600">Ups! Nešto je pošlo naopako, pokušajte ponovo.</p>
               {% endif %}
               {% if message_sent == "Success" %}
-              <p class="text-green-500">Message sent successfully!</p>
+              <p class="text-green-500">Poruka uspešno poslata!</p>
               {% endif %}
               {% endwith %}
             </form>
@@ -267,19 +267,19 @@
                 alt="KUBUS Logo"
                 class="h-10 mb-4"
               />
-              <p class="text-gray-400">Excellence in Project Management</p>
+              <p class="text-gray-400">Izvrsnost u upravljanju projektima</p>
             </div>
             <div>
-              <h4 class="text-lg font-bold mb-4">Contact</h4>
-              <p class="text-gray-400">123 Business Street</p>
-              <p class="text-gray-400">New York, NY 10001</p>
-              <p class="text-gray-400">+1 (555) 123-4567</p>
+              <h4 class="text-lg font-bold mb-4">Kontakt</h4>
+              <p class="text-gray-400">123 Poslovna ulica</p>
+              <p class="text-gray-400">Novi Sad, Srbija</p>
+              <p class="text-gray-400">+381 (21) 123-4567</p>
             </div>
           </div>
           <div
             class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
           >
-            <p>&copy; 2025 KUBUS. All rights reserved.</p>
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> KUBUS. Sva prava zadržana.</p>
           </div>
         </div>
       </footer>
@@ -297,7 +297,9 @@
             window.scrollTo(0, parseInt(scrollPosition));
             localStorage.removeItem("scrollPosition"); // Clear saved position
           }
+
         });
       </script> 
   </body>
 </html>
+
