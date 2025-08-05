@@ -198,6 +198,7 @@
             </div>
           </div>
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 h-auto lg:h-[600px]">
+            <a href={{ url_for("project_details", index=1) }}>
             <div class="relative h-full overflow-hidden !rounded-lg group">
               <img
                 src={{ url_for('static', filename='media/index_lilly.png') }}
@@ -218,6 +219,8 @@
                 </div>
               </div>
             </div>
+            </a>
+            <a href={{ url_for("project_details", index=3) }}>
             <div class="relative h-full overflow-hidden !rounded-lg group">
               <img
                 src={{ url_for('static', filename='media/index_parknovi.png') }}
@@ -236,6 +239,8 @@
                 </div>
               </div>
             </div>
+            </a>
+            <a href={{ url_for("project_details", index=5) }}>
             <div class="relative h-full overflow-hidden !rounded-lg group">
               <img
                 src={{ url_for('static', filename='media/index_iq.png') }}
@@ -256,6 +261,7 @@
                 </div>
               </div>
             </div>
+            </a>
           </div>
         </div>
       </div>
